@@ -17,8 +17,8 @@
       flex-direction: column;
     }
     .envelope {
-      width: 200px;
-      height: 150px;
+      width: 300px;
+      height: 200px;
       background: #e91e63;
       position: relative;
       cursor: pointer;
@@ -28,8 +28,9 @@
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 18px;
+      font-size: 20px;
       text-align: center;
+      transition: transform 0.6s ease;
     }
     .card {
       background: white;
@@ -37,7 +38,7 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
       padding: 20px;
       text-align: center;
-      max-width: 400px;
+      max-width: 90%;
       display: none;
       animation: fadeIn 1s ease forwards;
     }
@@ -57,14 +58,16 @@
       color: #e91e63;
       margin: 20px 0;
     }
-    .carousel {
-      display: flex;
+    .carousel-container {
       overflow-x: auto;
       scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      display: flex;
       gap: 10px;
       margin-top: 20px;
+      padding-bottom: 10px;
     }
-    .carousel img {
+    .carousel-container img {
       height: 200px;
       border-radius: 10px;
       scroll-snap-align: center;
@@ -74,7 +77,7 @@
 </head>
 <body>
   <div class="envelope" onclick="openCard()">
-    Clique aqui para abrir sua carta 💌
+    💌 Clique na carta para abrir 💌
   </div>
 
   <div class="card" id="messageCard">
@@ -83,7 +86,7 @@
     <p>Mãe, hoje estou te desejando feliz Dia das Mães, mas todo mundo sabe que esse dia é todos os dias.<br>
     Sei que isso não vai retribuir tudo o que você já me fez, mas espero que goste.<br>
     Te amo muito, mãe.</p>
-    <div class="carousel">
+    <div class="carousel-container">
       <img src="IMG-20250510-WA0017.jpg" alt="Foto 1">
       <img src="IMG-20250510-WA0018.jpg" alt="Foto 2">
       <img src="IMG-20250510-WA0019.jpg" alt="Foto 3">
