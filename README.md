@@ -16,22 +16,38 @@
       height: 100vh;
       flex-direction: column;
     }
+
     .envelope {
-      width: 300px;
+      width: 350px; /* Tamanho ajustado */
       height: 200px;
-      background: #e91e63;
+      background: #fff8e1; /* Cor mais suave que lembra um envelope */
       position: relative;
       cursor: pointer;
-      border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      border-radius: 15px; /* Bordas arredondadas */
+      border: 5px solid #e91e63; /* Borda espessa e colorida */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra para profundidade */
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      font-size: 20px;
+      color: #e91e63; /* Cor do texto */
+      font-size: 22px;
       text-align: center;
       transition: transform 0.6s ease;
+      position: relative;
     }
+
+    /* Triângulo que simula a aba do envelope */
+    .envelope:before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      border-bottom: 20px solid #e91e63; /* Cor da aba */
+    }
+
     .card {
       background: white;
       border-radius: 20px;
@@ -42,22 +58,27 @@
       display: none;
       animation: fadeIn 1s ease forwards;
     }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
     h1 {
       color: #e91e63;
     }
+
     p {
       font-size: 18px;
       color: #444;
     }
+
     .heart {
       font-size: 40px;
       color: #e91e63;
       margin: 20px 0;
     }
+
     .carousel-container {
       overflow-x: auto;
       scroll-snap-type: x mandatory;
@@ -67,6 +88,7 @@
       margin-top: 20px;
       padding-bottom: 10px;
     }
+
     .carousel-container img {
       height: 200px;
       border-radius: 10px;
