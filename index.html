@@ -141,6 +141,27 @@
         scroll-snap-align: center;
         flex-shrink: 0;
       }
+      .counter-container {
+        margin-top: 30px;
+        text-align: center;
+        color: #e91e63;
+        font-size: 1.2em;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        display: none;
+      }
+
+      .counter-container p {
+        margin: 0 0 10px 0;
+        font-weight: bold;
+      }
+
+      #timeCounter {
+        font-family: monospace;
+        font-size: 1.1em;
+      }
     </style>
   </head>
   <body>
@@ -167,6 +188,10 @@
         <img src="IMG-20250510-WA0020.jpg" />
       </div>
     </div>
+    <div class="counter-container">
+      <p>Nós nos conhecemos há:</p>
+      <div id="timeCounter"></div>
+    </div>
 
     <script>
       function openCard() {
@@ -174,8 +199,43 @@
         setTimeout(() => {
           document.querySelector(".envelope").style.display = "none";
           document.getElementById("messageCard").style.display = "block";
+          document.querySelector(".counter-container").style.display = "block"; // Add this line
         }, 1500);
       }
+
+      function updateCounter() {
+        const startDate = new Date("2012-05-20T00:00:00-03:00");
+        const now = new Date();
+
+        const diff = now - startDate;
+
+        const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+        const months = Math.floor(
+          (diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30)
+        );
+        const days = Math.floor(
+          (diff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24)
+        );
+        const hours = Math.floor(
+          (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        const counterText = `${years} ano${
+          years !== 1 ? "s" : ""
+        }, ${months} mês${months !== 1 ? "es" : ""}, ${days} dia${
+          days !== 1 ? "s" : ""
+        }, ${hours} hora${hours !== 1 ? "s" : ""}, ${minutes} minuto${
+          minutes !== 1 ? "s" : ""
+        }, ${seconds} segundo${seconds !== 1 ? "s" : ""}`;
+
+        document.getElementById("timeCounter").textContent = counterText;
+      }
+
+      // Update counter immediately and then every second
+      updateCounter();
+      setInterval(updateCounter, 1000);
     </script>
   </body>
 </html>
